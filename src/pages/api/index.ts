@@ -24,6 +24,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }),
     headers: req.headers,
   });
-  Object.entries(response.headers).forEach(([key, value]) => res.setHeader(key, value));
+  Object.entries(response.headers).forEach(([key, value]) => res.setHeader(key, `${value}`));
   res.status(response.statusCode).send(response.rawPayload);
 };
