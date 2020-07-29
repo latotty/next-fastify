@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     payload: await getRawBody(req, {
       length: req.headers['content-length'],
       limit: '1mb',
-      encoding: contentType.parse(req).parameters.charset,
+      encoding: req.headers['content-type'] ? contentType.parse(req).parameters.charset : undefined,
     }),
     headers: req.headers,
   });
